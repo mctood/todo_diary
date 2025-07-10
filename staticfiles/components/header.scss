@@ -1,0 +1,25 @@
+header {
+    padding: 32px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+header .inner-header {
+    width: 1200px;
+    max-width: 1200px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .header-group {
+    display: flex;
+    gap: 16px;
+}
+
+header .header-link {
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+@import "sections/title";
+
+section {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+
+    .inner-section {
+        max-width: 1200px;
+        width: 1200px;
+    }
+}

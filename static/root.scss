@@ -1,0 +1,19 @@
+@import "components/header";
+
+@font-face {
+    src: url("fonts/productsans.ttf");
+    font-family: "Product Sans";
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #110C06;
+    color: #fff;
+    font-family: "Product Sans", sans-serif;
+    font-size: 16px;
+}
+

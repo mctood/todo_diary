@@ -1,0 +1,107 @@
+.title-section {
+	padding-top: 96px;
+	gap: 48px;
+
+	.inner-section {
+		display: flex;
+		gap: 48px;
+	}
+}
+
+@keyframes moveTask {
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+.title-illustration {
+	width: 100%;
+	border: 1px solid #FFF4;
+	border-radius: 10px;
+	overflow: hidden;
+	max-height: 810px;
+
+	.illustration-task {
+		width: 100%;
+		padding: 24px;
+		background: #fff1;
+		transition: 0.7s ease-in;
+		transform-origin: right;
+		display: flex;
+		gap: 16px;
+
+		&.swiped {
+			transform: translateX(100%);
+		}
+
+		&.moved {
+			animation: moveTask .7s normal forwards ease-in-out;
+		}
+
+		.task-icon {
+			height: 19px;
+			aspect-ratio: 1;
+			border-radius: 3px;
+			border: 1px solid #FFF3;
+			color: #FFF3;
+			background: #110C06;
+			font-size: 12px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: 0.4s;
+
+			&.checked {
+				background: white;
+				border-color: white;
+				color: #110C06;
+			}
+		}
+	}
+}
+
+.title-details {
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+	height: fit-content;
+
+	.main-details {
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+
+		.main-title {
+			font-size: 64px;
+			font-weight: 900;
+		}
+		.main-description {
+			font-size: 24px;
+			opacity: .8;
+			font-weight: 700;
+		}
+	}
+	.main-button-group {
+		display: flex;
+		gap: 24px;
+
+		.main-button {
+			padding: 18px 50px;
+			background: #fff;
+			border-radius: 7px;
+			color: #110C06;
+			cursor: pointer;
+			transition: .4s;
+
+			&:hover {
+				opacity: .9;
+			}
+
+			&.secondary {
+				background: #ffffff22;
+				color: white;
+			}
+		}
+	}
+}
+

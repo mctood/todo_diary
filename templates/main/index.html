@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% sass_src 'main/index.scss' %}">
+    <script src="{% static "js/titleTasks.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="title-section">
+    <div class="inner-section">
+        <div class="title-details">
+            <img src="{% static "img/scientist.svg" %}" alt="" width="100%" class="title-image">
+            <div class="main-details">
+                <div class="main-title">
+                    Структурируйте свои мысли
+                </div>
+                <div class="main-description">
+                    Сервис поможет вам лучше разобраться в себе и с энтузиазмом подходить к новым делам.
+                </div>
+            </div>
+            <div class="main-button-group">
+                <div class="main-button">
+                    Зарегаться
+                </div>
+                <div class="main-button secondary">
+                    Секондари кнопка
+                </div>
+            </div>
+        </div>
+        <div class="title-illustration"></div>
+    </div>
+    </section>
+{% endblock %}

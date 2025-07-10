@@ -1,0 +1,18 @@
+{% load sass_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default Title{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% sass_src 'root.scss' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="{% static "js/jquery.js" %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% include "components/header.html" %}
+    {% block content %}{% endblock %}
+</body>
+</html>
