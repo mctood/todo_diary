@@ -99,6 +99,7 @@ const tasks = [
 	'Написать список "Что меня радует"',
 	'Попробовать новую позу для сна',
 	'Выбросить сломанную ручку',
+	'<span class="frog-text">Пожмать жабу</span>'
 ]
 
 function randomTasks() {
@@ -134,10 +135,18 @@ function swipeAll() {
 			}, 1000)
 		}
 		else {
+			setTimeout(() => {
+				startRoll()
+			}, 2000)
 			clearInterval(interval)
 		}
 	}, 2000)
+}
 
+function startRoll() {
+	let roll = $("#roll")
+	roll.show()
+	roll[0].play()
 }
 
 $(() => {

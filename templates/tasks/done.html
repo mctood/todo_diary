@@ -1,1 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static "js/task.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section>
+    <div class="inner-section">
+        {% csrf_token %}
+        <a type="button" class="done-btn" href="{% url 'tasks-index' %}">
+            <i class="fa fa-dot-circle"></i> Вернуться к активным
+        </a>
+        <div class="section-title">
+            Архив задач
+        </div>
+        <div class="tasks">
+            {% for task in tasks %}
+                <div class="task" data-id="{{ task.id }}" data-checked="true">
+                    <div class="task-icon checked">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <span class="task-text">{{ task.title }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+{% endblock %}

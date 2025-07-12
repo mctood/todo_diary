@@ -1,5 +1,6 @@
 postgres
-django
+django~=5.2.4
 libsass
 django-compressor
 django-sass-processor
+djangorestframework~=3.16.0

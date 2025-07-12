@@ -1,1 +1,11 @@
 {% extends 'base.html' %}
+
+{% block content %}
+    <section>
+    <div class="inner-section">
+        <div class="section-title">
+            Добрый день, {{ request.user.name }}!
+        </div>
+    </div>
+    </section>
+{% endblock %}

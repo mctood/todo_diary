@@ -1,1 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static "js/task.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section>
+    <div class="inner-section">
+        {% csrf_token %}
+        <a type="button" class="done-btn" href="{% url 'tasks-done' %}">
+            <i class="fa fa-check-circle"></i> Посмотреть выполненные
+        </a>
+        <div class="section-title">
+            Что там по плану?
+        </div>
+        <div class="tasks">
+            {% for task in tasks %}
+                <div class="task" data-id="{{ task.id }}">
+                    <div class="task-icon">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <span class="task-text">{{ task.title }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="task new-task">
+            <div class="task-icon">
+                <i class="fa fa-plus"></i>
+            </div>
+            <input type="text" name="new-task" id="new-task-input" placeholder="Добавьте задачу">
+        </div>
+    </div>
+    </section>
+{% endblock %}

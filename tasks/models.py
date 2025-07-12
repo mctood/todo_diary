@@ -8,3 +8,4 @@ class Task(models.Model):
     title=models.CharField(max_length=255)
     done=models.BooleanField(default=False)
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    checked_at=models.DateTimeField(blank=True, null=True)

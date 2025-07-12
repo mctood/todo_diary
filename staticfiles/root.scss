@@ -1,4 +1,16 @@
+$mobile: 568px !global;
+$wide-mobile: 666px !global;
+$tablet: 768px !global;
+$wide-tablet: 1024px !global;
+$desktop: 1200px !global;
+
 @import "components/header";
+@import "components/text";
+@import "components/hash-tester";
+@import "components/image-group";
+@import "components/auth-form";
+@import "components/tasks";
+@import "other";
 @import "section";
 
 @font-face {
@@ -9,15 +21,35 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background: #110C06;
+    background: var(--bg-color);
     color: #fff;
     font-family: "Product Sans", sans-serif;
-    font-size: 16px;
+    font-size: var(--size);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+:root {
+    --size-main-title: 64px;
+    --size-xxl: 48px;
+    --size-xl: 32px;
+    --size-l: 24px;
+    --size: 16px;
+    --size-s: 12px;
+
+    --bg-color: #110C06;
+
+    @media (max-width: $mobile) {
+        --size-main-title: 36px;
+        --size-xxl: 32px;
+        --size-xl: 24px;
+        --size-l: 16px;
+        --size: 14px;
+        --size-s: 8px;
+    }
+}

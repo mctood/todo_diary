@@ -11,5 +11,29 @@ services:
       - pg_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - django
+  web:
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/app/
+    environment:
+      - POSTGRES_USER=rogatka
+      - POSTGRES_PASSWORD=rogatka00
+      - POSTGRES_DB=rogatkalive
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=db
+      - PYTHONUNBUFFERED=1
+    restart: always
+    networks:
+      - django
 volumes:
   pg_data:
+networks:
+  django:
+    driver: bridge

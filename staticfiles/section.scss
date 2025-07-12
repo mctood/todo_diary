@@ -1,14 +1,64 @@
 @import "sections/title";
+@import "sections/note";
 
 section {
     width: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    padding: var(--size-xl);
 
     .inner-section {
         max-width: 1200px;
-        width: 1200px;
+        width: 100%;
+
+        .section-title-button-group {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--size-xl);
+
+            .buttons-group {
+                display: flex;
+                gap: var(--size);
+            }
+
+            .section-title {
+                margin-bottom: 0;
+            }
+
+            .section-button {
+                background: transparent;
+                border: none;
+                color: #FFF;
+                font-size: var(--size);
+                display: flex;
+                gap: 12px;
+                align-items: center;
+                padding: 12px var(--size-l);
+                border-radius: 7px;
+                cursor: pointer;
+                transition: .3s;
+
+                &:hover {
+                    background: #FFF1;
+                }
+
+                &.primary {
+                    background: #FFF3;
+
+                    &:hover {
+                        opacity: .9;
+                    }
+                }
+            }
+        }
     }
+}
+
+.section-separator {
+    max-width: 1200px;
+    width: 1200px;
+    margin-block: 96px 16px;
 }

@@ -1,15 +1,31 @@
 <header>
     <div class="inner-header">
         <div class="header-group">
-            рогатка лайв
+            <a class="header-logo" href="{% url "index" %}">
+                Promorrow
+            </a>
         </div>
-        <div class="header-group">
-            <div class="header-link">
-                войти
+        {% if not request.user.is_authenticated %}
+            <div class="header-group">
+                <a class="header-link" href="{% url "login" %}">
+                    войти
+                </a>
+                <a class="header-link" href="{% url "register" %}">
+                    зарегаться
+                </a>
             </div>
-            <div class="header-link">
-                зарегаться
+        {% else %}
+            <div class="header-group">
+                <a class="header-link" href="{% url "tasks-index" %}">
+                    дела
+                </a>
+                <a class="header-link" href="{% url "notes-index" %}">
+                    заметки
+                </a>
+                <a class="header-link" href="{% url "me" %}">
+                    {{ request.user.username }}
+                </a>
             </div>
-        </div>
+        {% endif %}
     </div>
 </header>

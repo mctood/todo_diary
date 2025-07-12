@@ -1,1 +1,64 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static "js/note.js" %}"></script>
+    <script>
+        $(() => {
+			$(".day-mood-selector .option:nth-child({{ note.mood }})").addClass("lifted")
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section>
+    <div class="inner-section note-inner-section">
+        <div class="wrapper">
+            <div class="note-buttons-container">
+                <form action="{% url "notes-index" %}" method="post">
+                    {% csrf_token %}
+                    <button class="note-save-button" id="note-save-button">
+                        <i class="fa fa-save"></i>
+                        Сохранить
+                    </button>
+
+                    <input type="hidden" name="note" id="note-hidden-input">
+                    <input type="hidden" name="mood" id="mood-hidden-input">
+                </form>
+
+                <a class="note-archive-button" href="{% url 'notes-archive' %}">
+                    <i class="fa fa-archive"></i>
+                    Архив
+                </a>
+            </div>
+            <div class="note-date-caption">
+                Заметка от {{ date|date:"d.m.Y" }}
+            </div>
+        </div>
+
+
+
+
+        <div class="day-mood-selector{% if note %} note{% endif %}">
+            <div class="details">
+                <div class="title">
+                    Как прошел ваш день?
+                </div>
+                <div class="caption">
+                    Выберите эмодзи, который лучше всего его описывает.
+                </div>
+            </div>
+            <div class="select">
+                <div class="option" data-mood="1" style="color: #62a0ea"><i class="fa fa-face-sad-cry"></i></div>
+                <div class="option" data-mood="2" style="color: #5fb1d2"><i class="fa fa-face-sad-tear"></i></div>
+                <div class="option" data-mood="3" style="color: #5dc2ba"><i class="fa fa-face-meh"></i></div>
+                <div class="option" data-mood="4" style="color: #5ad2a1"><i class="fa fa-face-smile"></i></div>
+                <div class="option" data-mood="5" style="color: #57e389"><i class="fa fa-face-grin-beam"></i></div>
+            </div>
+        </div>
+
+
+        <div class="note-container" contenteditable aria-placeholder="Введите текст">{{ note.content }}</div>
+    </div>
+    </section>
+{% endblock %}

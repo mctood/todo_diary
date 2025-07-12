@@ -1,1 +1,51 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static "js/noteArchive.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section>
+    <div class="inner-section note-inner-section">
+        <a type="button" class="today-btn" href="{% url 'notes-index' %}">
+            <i class="fa fa-arrow-left"></i> Редактировать сегодняшнюю
+        </a>
+        <div class="section-title" style="margin:0">
+            Архив заметок
+        </div>
+        <div class="note-date-selectors">
+            <div class="month-selector">
+                <select name="month" id="note-month-selector">
+                    {% for m in months %}
+                        <option {% if forloop.counter == month %}selected{% endif %} value="{{ forloop.counter }}">{{ m }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="year-selector">
+                <select name="year" id="note-year-selector">
+                    {% for y in years %}
+                        <option {% if y == year %}selected{% endif %} value="{{ y }}">{{ y }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="note-archive-days">
+            {% for day in days %}
+                <a class="day {{ day.classes }}" {% if day.note %}href="{% url 'notes-seek' day.note.date.year day.note.date.month day.number %}"{% endif %}>
+                    <div class="number">
+                        {{ day.number }}
+                    </div>
+                    <div class="indicator">
+                        {% if day.note %}
+                            <i class="fa fa-{{ day.mood }}"></i>
+                        {% else %}
+                            <i class="fa fa-cancel no-data"></i>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+{% endblock %}

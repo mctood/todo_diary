@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<form action="{% block action %}{% endblock %}" method="post" class="auth-form">
+{% csrf_token %}
+{% block fields %}{% endblock %}
+</form>

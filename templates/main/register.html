@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% sass_src 'center.scss' %}">
+    <script>
+        let totalSteps = 3;
+    </script>
+    <script src="{% static 'js/multiforms.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {% include 'components/forms/register.html' %}
+{% endblock %}

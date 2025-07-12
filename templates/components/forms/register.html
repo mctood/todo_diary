@@ -1,1 +1,59 @@
 {% extends "components/base_form.html" %}
+
+{% block action %}{% url "register" %}{% endblock %}
+
+{% block fields %}
+    <button type="button" class="step-btn prev">
+        <i class="fa fa-arrow-left"></i> Назад
+    </button>
+    <div class="form-steps">
+        <div class="step">
+            <div class="step-title">
+                Придумайте имя пользователя
+            </div>
+            <div class="step-caption">
+                Оно должно быть крутым и уникальным.<br>
+                Только латинские буквы и точка.
+            </div>
+            <div class="input-row">
+                <input type="text" class="username-input" placeholder="Введите его здесь..." name="username">
+                <button type="button" class="step-btn next">
+                    Далее
+                </button>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-title">
+                Придумайте пароль
+            </div>
+            <div class="step-caption">
+                От 8 символов. Обязательно с цифрами и буквами!
+            </div>
+            <div class="input-row">
+                <input type="password" class="password-input" name="password">
+                <button type="button" class="step-btn next">
+                    Далее
+                </button>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-title">
+                Как вас называть?
+            </div>
+            <div class="step-caption">
+                Что-нибудь, что вам комфортно слышать.
+            </div>
+            <div class="input-row">
+                <input type="text" class="username-input" name="name">
+                <button type="submit" class="step-btn next">
+                    Подтвердить
+                </button>
+            </div>
+        </div>
+    </div>
+    {% if not ok %}
+        <div class="auth-form-error">
+            {{ error }}
+        </div>
+    {% endif %}
+{% endblock %}

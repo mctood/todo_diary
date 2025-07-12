@@ -21,15 +21,65 @@
                 </div>
             </div>
             <div class="main-button-group">
-                <div class="main-button">
+                {% if not request.user.is_authenticated %}
+                <div class="main-button" onclick="location.href = '{% url "register" %}'">
                     Зарегаться
                 </div>
                 <div class="main-button secondary">
-                    Секондари кнопка
+                    Узнать больше
+                </div>
+                {% else %}
+                <div class="main-button" onclick="location.href = '{% url "notes-index" %}'">
+                    Как прошел ваш день?
+                </div>
+                <div class="main-button secondary" onclick="location.href = '{% url "tasks-index" %}'">
+                    Незавершенные дела
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="title-illustration">
+            <video muted src="{% static "video/rickroll.mp4" %}" id="roll" style="display: none"></video>
+        </div>
+    </div>
+    </section>
+    <div class="section-separator"></div>
+    <section class="about-section">
+    <div class="inner-section">
+        <div class="section-title">
+            А если подробнее?
+        </div>
+        <div class="image-groups">
+            <div class="image-group">
+                <img src="{% static "img/diary.png" %}" alt="">
+                <div class="section-content">
+                    <div class="title">
+                        Данный сервис сочетает в себе функции ежедневника и todo-листа.
+                    </div>
+                    Проще говоря, сюда можно записать то, что вас волнует в данный момент, либо составить список дел на скорую руку. Через несколько лет вы откроете этот сайт и вспомните, что когда-то, например, планировали слетать в Геленджик, или забыли забрать карту из банка.
+                </div>
+            </div>
+            <div class="image-group">
+                <img src="{% static "img/secure.png" %}" alt="">
+                <div class="section-content">
+                    <div class="title">
+                        Даже администраторы сервиса не увидят ваших заметок.
+                    </div>
+                    После регистрации система создаст пару из публичного и приватного ключей. Публичный ключ будет храниться на сервере, приватный - на вашем компьютере. При каждом входе, помимо пароля, у вас будет запрашиваться приватный ключ.
+                </div>
+            </div>
+            <div class="image-group">
+                <img src="{% static "img/eye.png" %}" alt="">
+                <div class="section-content">
+                    <div class="title">
+                        Вы спросите: как система поймет, что я ввел правильный ключ?
+                    </div>
+                    Всё просто: на сервере лежит хэш вашего приватного ключа. Для каждой строки хэш-функция возвращает свой результат. Восстановить изначальную строку по ее хэшу невозможно. Ниже вы можете посмотреть, как это работает.
                 </div>
             </div>
         </div>
-        <div class="title-illustration"></div>
+
+        {% include "components/hash_tester.html" %}
     </div>
     </section>
 {% endblock %}

@@ -23,7 +23,12 @@ from rogatkalive import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('trust/', views.trust, name='trust'),
+
+    path("login/", views.login, name="login"),
+    path("logout/", views.logout, name="logout"),
+    path("register/", views.register, name="register"),
+    path("me/", views.me, name="me"),
+    path("new-key/", views.create_key, name="create_key"),
     path("tasks/", include(tasks.urls)),
     path("notes/", include(notes.urls)),
     path('admin/', admin.site.urls),

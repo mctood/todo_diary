@@ -1,0 +1,55 @@
+.hash-tester {
+	width: 100%;
+	border-radius: 10px;
+	border-collapse: inherit;
+	border-spacing: 0;
+	margin-block: var(--size-xxl);
+
+	td {
+		padding: var(--size);
+		border: 1px solid #FFF4;
+	}
+
+	.title-input {
+		border-radius: 7px 0 0 0;
+		border-bottom: none;
+		border-right: none;
+		background: #FFF1;
+
+	}
+
+	.title-hash {
+		border-radius: 0 7px 0 0;
+		border-bottom: none;
+		background: #FFF1;
+	}
+
+	.input {
+		border-radius: 0 0 0 7px;
+		border-right: none;
+
+		@media (max-width: $tablet) {
+			vertical-align: top;
+		}
+
+		input {
+			border: none;
+			padding: 0;
+			margin: 0;
+			background: transparent;
+			height: 19px;
+			width: 100%;
+			color: #fff;
+			font-family: "Product Sans", sans-serif;
+			outline: none;
+		}
+	}
+
+	.hash {
+		border-radius: 0 0 7px 0;
+
+		@media (max-width: $tablet) {
+			word-break: break-word;
+		}
+	}
+}

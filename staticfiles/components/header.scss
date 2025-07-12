@@ -1,25 +1,33 @@
 header {
-    padding: 32px;
+    padding: var(--size-xl);
     display: flex;
     position: sticky;
     top: 0;
     width: 100%;
     justify-content: center;
-}
+    z-index: 5;
+    backdrop-filter: blur(20px);
 
-header .inner-header {
-    width: 1200px;
-    max-width: 1200px;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-}
+    .inner-header {
+        width: 1200px;
+        max-width: 1200px;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
 
-header .header-group {
-    display: flex;
-    gap: 16px;
-}
+        .header-group {
+            display: flex;
+            gap: var(--size);
 
-header .header-link {
-    cursor: pointer;
+            .header-link, .header-logo {
+                cursor: pointer;
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .header-logo {
+                font-weight: 900;
+            }
+        }
+    }
 }

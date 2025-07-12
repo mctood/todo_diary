@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.contrib import staticfiles
@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-9gow6_k*kch-cooeff(ml+sfk=bd-nb4dj9i&rdbbv9mjw652^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["https://0726d9da48c5.ngrok-free.app"]
 
 
 # Application definition
@@ -82,11 +84,11 @@ WSGI_APPLICATION = 'rogatkalive.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rogatkalive',
-        'USER': 'rogatka',
-        'PASSWORD': 'rogatka00',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv("POSTGRES_DB", default="rogatkalive"),
+        'USER': os.getenv("POSTGRES_USER", default="rogatka"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD", default="rogatka00"),
+        'HOST': os.getenv("POSTGRES_HOST", default="db"),
+        'PORT': os.getenv("POSTGRES_PORT", default="5432"),
     }
 }
 

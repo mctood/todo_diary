@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <script>
+        $(() => {
+			$(".day-mood-selector .option:nth-child({{ note.mood }})").addClass("lifted")
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section>
+    <div class="inner-section note-inner-section">
+        <a type="button" class="today-btn" href="{% url 'notes-archive' %}">
+            <i class="fa fa-arrow-left"></i> Назад в архив
+        </a>
+
+        <div class="day-mood-selector{% if note %} note{% endif %}">
+            <div class="select">
+                <div class="option" data-mood="1" style="color: #62a0ea"><i class="fa fa-face-sad-cry"></i></div>
+                <div class="option" data-mood="2" style="color: #5fb1d2"><i class="fa fa-face-sad-tear"></i></div>
+                <div class="option" data-mood="3" style="color: #5dc2ba"><i class="fa fa-face-meh"></i></div>
+                <div class="option" data-mood="4" style="color: #5ad2a1"><i class="fa fa-face-smile"></i></div>
+                <div class="option" data-mood="5" style="color: #57e389"><i class="fa fa-face-grin-beam"></i></div>
+            </div>
+        </div>
+        <div class="note-container">{{ note.content }}</div>
+    </div>
+    </section>
+{% endblock %}
